@@ -1,0 +1,20 @@
+name: List README
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  checkout:
+    uses: linuxserver/github-workflows/.github/workflows/checkout.yml@wrappers
+
+  list-readme:
+    needs: checkout
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.checkout.outputs.commit }}
+      - name: List README Contents
+        run: cat README.md
