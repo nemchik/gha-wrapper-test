@@ -1,0 +1,14 @@
+name: List README
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  list-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: linuxserver/github-workflows/.github/actions/checkout@v1
+      - name: List README Contents
+        run: cat README.md
